@@ -10,6 +10,7 @@ import Checkout from "./pages/Checkout";
 import CategoryPage from "./pages/CategoryPage"; // 1. Import
 import About from "./pages/About"; // 2. Import
 import SearchModal from "./components/ui/SearchModal";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           {/* New Pages */}
           <Route path="/category/:categoryName" element={<CategoryPage />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           
           {/* Existing Routes */}
           <Route path="/product/:id" element={<ProductDetails />} />
