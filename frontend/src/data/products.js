@@ -1,0 +1,32 @@
+export const PRODUCTS = [
+  {
+    id: "aura-one",
+    name: "Aura One",
+    price: 299,
+    category: "Over-Ear",
+    image: "https://pngimg.com/d/headphones_PNG101984.png",
+    description: "The flagship experience. Aura One combines studio-grade fidelity with industry-leading active noise cancellation. Immerse yourself in the sound of silence.",
+    specs: ["40mm Beryllium Drivers", "30h Battery Life", "Hybrid ANC", "Bluetooth 5.3"],
+    colors: ["#0a0a0a", "#e5e5e5", "#00f3ff"],
+  },
+  {
+    id: "aura-buds",
+    name: "Aura Buds Pro",
+    price: 149,
+    category: "In-Ear",
+    image: "https://parspng.com/wp-content/uploads/2022/10/headphonespng.parspng.com-6.png",
+    description: "Small size, massive sound. The Aura Buds Pro feature adaptive transparency mode and a fit so comfortable you'll forget you're wearing them.",
+    specs: ["11mm Dynamic Drivers", "24h Battery (with Case)", "IPX4 Water Resistant", "Transparency Mode"],
+    colors: ["#ffffff", "#0a0a0a"],
+  },
+  {
+    id: "aura-pulse",
+    name: "Aura Pulse",
+    price: 199,
+    category: "Sport",
+    image: "https://pngimg.com/d/headphones_PNG7645.png",
+    description: "Built for movement. Secure-fit earhooks and sweat resistance make the Aura Pulse your perfect workout companion.",
+    specs: ["Bone Conduction Tech", "12h Battery", "IPX7 Waterproof", "Shockproof"],
+    colors: ["#00f3ff", "#ff0055"],
+  },
+];

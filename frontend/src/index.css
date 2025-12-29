@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+
+
+@theme {
+  /* --- 1. THEME COLORS --- */
+  /* We use a very rich, almost-black blue for depth instead of flat #000000 */
+  --color-dark: #050507;       
+  --color-surface: #0f0f13;    
+  
+  /* High-Contrast Text Colors */
+  --color-text-main: #ffffff;
+  --color-text-muted: #9ca3af; /* Lighter gray for better visibility */
+  
+  /* Accents */
+  --color-neon: #00f3ff;       
+  --color-neon-purple: #bd00ff;
+
+  /* --- 2. TYPOGRAPHY --- */
+  /* Syne: A wide, aggressive font for headlines */
+  --font-display: "Syne", sans-serif;
+  
+  /* Space Grotesk: A technical, readable font for body text */
+  --font-body: "Space Grotesk", sans-serif;
+
+  /* --- 3. ANIMATIONS --- */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes shimmer {
+    from { background-position: 0 0; }
+    to { background-position: -200% 0; }
+  }
+}
+
+/* --- 4. GLOBAL RESET --- */
+/* This fixes the "White Background" issue by forcing the whole page to be dark */
+html, body {
+  background-color: var(--color-dark);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  -webkit-font-smoothing: antialiased; /* Makes fonts look thinner and sharper on Mac */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- 5. UTILITY CLASSES --- */
+/* Custom scrollbar for that premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon);
+}
+
+button{
+    cursor: pointer;
+}

@@ -1,0 +1,36 @@
+const Product = require("../models/Product");
+
+// @desc    Fetch all products
+// @route   GET /api/products
+// @access  Public
+const getProducts = async (req, res, next) => {
+  try {
+    const products = await Product.find({});
+    res.json(products);
+  } catch (error) {
+    next(error); // Pass error to custom middleware
+  }
+};
+
+// @desc    Fetch single product
+// @route   GET /api/products/:id
+// @access  Public
+const getProductById = async (req, res, next) => {
+  try {
+    const product = await Product.findOne({ id: req.params.id });
+
+    if (product) {
+      res.json(product);
+    } else {
+      res.status(404);
+      throw new Error("Product not found");
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = {
+  getProducts,
+  getProductById,
+};
