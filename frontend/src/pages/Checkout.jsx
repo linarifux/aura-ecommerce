@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { RiSecurePaymentLine, RiTruckLine, RiArrowLeftLine, RiCheckLine } from "react-icons/ri";
 import { clearCart } from "../features/cartSlice";
+import { Toaster, toast } from "react-hot-toast"; // 1. Import Toast
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -24,8 +25,31 @@ const Checkout = () => {
     setTimeout(() => {
       dispatch(clearCart());
       setIsProcessing(false);
-      alert("Order Placed Successfully! (Simulation)");
-      navigate("/");
+      
+      // 2. Beautiful Success Notification
+      toast.success(
+        <div className="flex flex-col">
+          <span className="font-bold text-white font-display text-lg">Order Confirmed!</span>
+          <span className="text-sm text-gray-400">Your audio gear is being prepared.</span>
+        </div>,
+        {
+          duration: 4000,
+          style: {
+            background: '#0a0a0a',
+            border: '1px solid rgba(0, 243, 255, 0.2)', // Neon border
+            padding: '16px',
+            color: '#fff',
+            boxShadow: '0 0 20px rgba(0, 243, 255, 0.1)',
+          },
+          iconTheme: {
+            primary: '#00f3ff', // Neon Checkmark
+            secondary: '#000',
+          },
+        }
+      );
+
+      // Redirect after a short delay so they see the toast
+      setTimeout(() => navigate("/"), 2000);
     }, 2000);
   };
 
@@ -43,6 +67,9 @@ const Checkout = () => {
 
   return (
     <div className="min-h-screen bg-dark pt-24 pb-12 px-4 md:px-6 md:pt-32">
+      {/* 3. Mount the Toaster component */}
+      <Toaster position="top-center" reverseOrder={false} />
+      
       <div className="container mx-auto max-w-6xl">
         
         {/* HEADER */}
