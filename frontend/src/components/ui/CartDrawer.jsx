@@ -70,8 +70,9 @@ const CartDrawer = () => {
               ) : (
                 items.map((item) => (
                   <motion.div
-                    layout // Animates layout changes when items are removed
-                    key={`${item.id}-${item.selectedColor}`} // Unique key for variants
+                    layout
+                    // Use variantId for the key to ensure uniqueness
+                    key={item.variantId} 
                     className="flex gap-4 bg-white/5 p-4 rounded-xl border border-white/5"
                   >
                     {/* Product Image */}
@@ -93,7 +94,7 @@ const CartDrawer = () => {
                           <p className="font-mono text-neon text-sm">${item.price}</p>
                         </div>
                         
-                        {/* --- VARIANT INFO ADDED HERE --- */}
+                        {/* VARIANT INFO */}
                         {item.selectedColor && (
                           <div className="flex items-center gap-2 mt-2">
                             <span className="text-[10px] uppercase tracking-wider text-gray-500 font-mono">
@@ -112,12 +113,15 @@ const CartDrawer = () => {
                         <span className="text-sm text-gray-400 font-mono">
                           Qty: {item.quantity}
                         </span>
+                        
+                        {/* FIX IS HERE: Pass item.variantId instead of item.id */}
                         <button
-                          onClick={() => dispatch(removeFromCart(item.id))}
+                          onClick={() => dispatch(removeFromCart(item.variantId))}
                           className="text-gray-500 hover:text-red-400 transition-colors p-1"
                         >
                           <RiDeleteBinLine size={18} />
                         </button>
+
                       </div>
                     </div>
                   </motion.div>
@@ -135,8 +139,8 @@ const CartDrawer = () => {
               </div>
               <button
                 onClick={() => {
-                  dispatch(toggleCart(false)); // Close drawer
-                  navigate("/checkout"); // Go to page
+                  dispatch(toggleCart(false));
+                  navigate("/checkout");
                 }}
                 className="w-full py-4 bg-neon text-dark font-bold rounded-lg hover:bg-white transition-colors duration-300"
               >
